@@ -1,0 +1,37 @@
+<div class="card">
+  <div class="card-header">
+    Listado de Alumnos
+  </div>
+
+  <table class="table table-bordered border-primary">
+    <thead>
+      <tr>
+        <th scope="col">Nombre</th>
+        <th scope="col">Fecha de nacimiento</th>
+        <th scope="col">Sexo</th>
+        <th scope="col">Grado de estudios</th>
+        <th scope="col">Email</th>
+        <th scope="col">Teléfono</th>
+      </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let alumno of alumnos">
+      <td>{{alumno.nombre + " " +alumno.apellidoPaterno + " " + alumno.apellidoMaterno}}</td>
+      <td>{{alumno.fechaNacimiento.substr(0,10)}}</td>
+      <td>{{alumno.sexo == "M" ? "Masculino" : "Femenino"}}</td>
+      <td>
+        <select disabled class="form-select form-control" [(ngModel)]="alumno.gradoEstudiosActual" name="gradoEstudiosActual">
+          <option selected>Selecciona una opción</option>
+          <option value="S">Secundaria</option>
+          <option value="B">Bachillerato</option>
+          <option value="L">Licenciatura</option>
+          <option value="P">Posgrado</option>
+          <option value="M">Maestría</option>
+          <option value="D">Doctorado</option>
+        </select>
+      </td>
+      <td>{{alumno.email}}</td>
+      <td>{{alumno.telefono}}</td>
+    </tr>
+  </table>
+</div>
