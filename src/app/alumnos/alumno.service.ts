@@ -14,7 +14,7 @@ export class AlumnoService {
 
   constructor(private http: HttpClient) {}
 
-  getClientes(): Observable<Alumno[]>{
+  getAlumnos(): Observable<Alumno[]>{
     //return of(ALUMNOS);
     return this.http.get(this.urlEndPoint).pipe(
       map( response => response as Alumno[] )
