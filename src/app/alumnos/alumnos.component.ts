@@ -17,7 +17,7 @@ export class AlumnosComponent implements OnInit {
     if(!this.authService.isAuth()){
       this.router.navigate(['/login']);
     }
-    this.alumnoService.getClientes().subscribe(
+    this.alumnoService.getAlumnos().subscribe(
       clientes => this.alumnos = clientes
     );
   }
