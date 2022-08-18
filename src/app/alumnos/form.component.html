@@ -3,43 +3,71 @@
   <div class="card-body">
     <form (ngSubmit) = "create()">
       <div class="form-group row" style="margin-bottom: 5px;">
-        <label for="nombre" class="col-form-label col-sm-2">Nombre</label>
-        <div class="col-sm-6">
-          <input type="text" class="form-control" [(ngModel)]="alumno.nombre" name="nombre">
+        <label for="nombre" class="col-form-label col-lg-2 col-sm-12">Nombre</label>
+        <div class="col-lg-6 col-sm-12">
+          <input type="text" class="form-control" [(ngModel)]="alumno.nombre" name="nombre" required minlength="2" #nombre="ngModel">
+          <div class="alert alert-danger" *ngIf="nombre.invalid && (nombre.dirty || nombre.touched)">
+            <div class="nombre.errors.required">
+              El nombre es requerido
+            </div>
+            <div class="nombre.errors.minlength">
+              El nombre debe tener al menos 2 caracteres
+            </div>
+          </div>
         </div>
       </div>
       <div class="form-group row" style="margin-bottom: 5px;">
-        <label for="nombre" class="col-form-label col-sm-2">Apellido Paterno</label>
-        <div class="col-sm-6">
-          <input type="text" class="form-control" [(ngModel)]="alumno.apellidoPaterno" name="apellidoPaterno">
+        <label for="apellidoPaterno" class="col-form-label col-lg-2 col-sm-12">Apellido Paterno</label>
+        <div class="col-lg-6 col-sm-12">
+          <input type="text" class="form-control" [(ngModel)]="alumno.apellidoPaterno" name="apellidoPaterno" required #apellidoPaterno="ngModel">
+          <div class="alert alert-danger" *ngIf="apellidoPaterno.invalid && (apellidoPaterno.dirty || apellidoPaterno.touched)">
+            <div class="apellidoPaterno.errors.required">
+              El apellido paterno es requerido
+            </div>
+          </div>
         </div>
       </div>
       <div class="form-group row" style="margin-bottom: 5px;">
-        <label for="nombre" class="col-form-label col-sm-2">Apellido Materno</label>
-        <div class="col-sm-6">
-          <input type="text" class="form-control" [(ngModel)]="alumno.apellidoMaterno" name="apellidoMaterno">
+        <label for="apellidoMaterno" class="col-form-label col-lg-2 col-sm-12">Apellido Materno</label>
+        <div class="col-lg-6 col-sm-12">
+          <input type="text" class="form-control" [(ngModel)]="alumno.apellidoMaterno" name="apellidoMaterno" required #apellidoMaterno="ngModel">
+          <div class="alert alert-danger" *ngIf="apellidoMaterno.invalid && (apellidoMaterno.dirty || apellidoMaterno.touched)">
+            <div class="apellidoMaterno.errors.required">
+              El apellido materno es requerido
+            </div>
+          </div>
         </div>
       </div>
       <div class="form-group row" style="margin-bottom: 5px;">
-        <label for="nombre" class="col-form-label col-sm-2">Fecha de nacimiento</label>
-        <div class="col-sm-6">
-          <input type="date" class="form-control" [(ngModel)]="alumno.fechaNacimiento" name="fechaNacimiento">
+        <label for="fechaNacimiento" class="col-form-label col-lg-2 col-sm-12">Fecha de nacimiento</label>
+        <div class="col-lg-6 col-sm-12">
+          <input type="date" class="form-control" [(ngModel)]="alumno.fechaNacimiento" name="fechaNacimiento" required #fechaNacimiento="ngModel">
+          <div class="alert alert-danger" *ngIf="fechaNacimiento.invalid && (fechaNacimiento.dirty || fechaNacimiento.touched)">
+            <div class="fechaNacimiento.errors.required">
+              La fecha de nacimiento es requerida
+            </div>
+          </div>
         </div>
       </div>
       <div class="form-group row" style="margin-bottom: 15px;">
-        <label for="nombre" class="col-form-label col-sm-2">Sexo</label>
-        <div class="col-sm-6">
-          <select class="form-select form-control" [(ngModel)]="alumno.sexo" name="sexo">
+        <label for="sexo" class="col-form-label col-lg-2 col-sm-12">Sexo</label>
+        <div class="col-lg-6 col-sm-12">
+          <select class="form-select form-control" [(ngModel)]="alumno.sexo" name="sexo" required #sexo="ngModel">
             <option selected>Selecciona una opción</option>
             <option value="M">Masculino</option>
             <option value="F">Femenino</option>
           </select>
+          <div class="alert alert-danger" *ngIf="sexo.invalid && (sexo.dirty || sexo.touched)">
+            <div class="sexo.errors.required">
+              El sexo es requerido
+            </div>
+          </div>
         </div>
       </div>
       <div class="form-group row" style="margin-bottom: 5px;">
-        <label for="nombre" class="col-form-label col-sm-2">Grado de estudios actual</label>
-        <div class="col-sm-6">
-          <select class="form-select form-control" [(ngModel)]="alumno.gradoEstudiosActual" name="gradoEstudiosActual">
+        <label for="gradoEstudiosActual" class="col-form-label col-lg-2 col-sm-12">Grado de estudios actual</label>
+        <div class="col-lg-6 col-sm-12">
+          <select class="form-select form-control" [(ngModel)]="alumno.gradoEstudiosActual" name="gradoEstudiosActual" required #gradoEstudiosActual="ngModel">
             <option selected>Selecciona una opción</option>
             <option value="S">Secundaria</option>
             <option value="B">Bachillerato</option>
@@ -48,22 +76,37 @@
             <option value="M">Maestría</option>
             <option value="D">Doctorado</option>
           </select>
+          <div class="alert alert-danger" *ngIf="gradoEstudiosActual.invalid && (gradoEstudiosActual.dirty || gradoEstudiosActual.touched)">
+            <div class="gradoEstudiosActual.errors.required">
+              El grado de estudios es requerido
+            </div>
+          </div>
         </div>
       </div>
       <div class="form-group row" style="margin-bottom: 5px;">
-        <label for="nombre" class="col-form-label col-sm-2">Email</label>
-        <div class="col-sm-6">
-          <input type="text" class="form-control" [(ngModel)]="alumno.email" name="email">
+        <label for="email" class="col-form-label col-lg-2 col-sm-12">Email</label>
+        <div class="col-lg-6 col-sm-12">
+          <input type="text" class="form-control" [(ngModel)]="alumno.email" name="email" required #email="ngModel">
+          <div class="alert alert-danger" *ngIf="email.invalid && (email.dirty || email.touched)">
+            <div class="email.errors.required">
+              El email es requerido
+            </div>
+          </div>
         </div>
       </div>
       <div class="form-group row" style="margin-bottom: 5px;">
-        <label for="nombre" class="col-form-label col-sm-2">Teléfono</label>
-        <div class="col-sm-6">
-          <input type="text" class="form-control" [(ngModel)]="alumno.telefono" name="telefono">
+        <label for="telefono" class="col-form-label col-lg-2 col-sm-12">Teléfono</label>
+        <div class="col-lg-6 col-sm-12">
+          <input type="text" class="form-control" [(ngModel)]="alumno.telefono" name="telefono" required #telefono="ngModel">
+          <div class="alert alert-danger" *ngIf="telefono.invalid && (telefono.dirty || telefono.touched)">
+            <div class="telefono.errors.required">
+              El teléfono es requerido
+            </div>
+          </div>
         </div>
       </div>
       <div class="form-group row">
-        <div class="col-sm-6">
+        <div class="col-lg-6 col-sm-12">
           <button class="btn btn-primary" role="button">Crear</button>
         </div>
       </div>
